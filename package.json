@@ -1,0 +1,80 @@
+{
+  "name": "sc-support-forms",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "npm run generate-styles && webpack",
+    "generate-styles": "tcm src",
+    "lint": "tslint \"src/**/*.ts?(x)\"",
+    "start": "npm run generate-styles && npm run generate-styles -- -w & webpack --watch",
+    "test": "jest src",
+    "update-snapshots": "jest src -u"
+  },
+  "dependencies": {
+    "classnames": "^2.2.5",
+    "react": "15.x",
+    "react-dom": "15.x",
+    "react-redux": "^5.0.2",
+    "redux": "^3.6.0",
+    "typed-css-modules": "^0.3.0"
+  },
+  "devDependencies": {
+    "@sc/tslint-config-sc": "^1.0.2",
+    "@types/classnames": "^2.2.3",
+    "@types/fetch-mock": "^5.12.0",
+    "@types/jest": "^18.1.1",
+    "@types/react": "^15.0.16",
+    "@types/react-addons-test-utils": "^0.14.17",
+    "@types/react-dom": "^0.14.23",
+    "@types/react-redux": "^4.4.38",
+    "@types/redux": "^3.6.0",
+    "@types/redux-logger": "^3.0.3",
+    "@types/redux-thunk": "^2.1.0",
+    "@types/sinon": "^2.3.4",
+    "babel-core": "^6.26.0",
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^0.26.1",
+    "extract-text-webpack-plugin": "^3.0.0",
+    "html-webpack-plugin": "^2.28.0",
+    "jest": "^19.0.2",
+    "jest-cli": "^19.0.2",
+    "postcss-cssnext": "^2.9.0",
+    "postcss-import": "^9.1.0",
+    "postcss-loader": "^1.3.1",
+    "react-test-renderer": "^15.6.1",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.2.0",
+    "sinon": "^3.2.1",
+    "style-loader": "^0.13.1",
+    "ts-loader": "^2.0.1",
+    "tslint": "^4.4.2",
+    "tslint-eslint-rules": "^3.4.0",
+    "typescript": "^2.5.1",
+    "unexpected": "^10.33.2",
+    "unexpected-react": "^4.1.0",
+    "unexpected-sinon": "^10.8.2",
+    "webpack": "1.x",
+    "webpack-dev-server": "1.x"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "moduleNameMapper": {
+      "^.+\\.css$": "<rootDir>/src/config/css-stub.js"
+    },
+    "testPathIgnorePatterns": [
+      "/dist/",
+      "/node_modules/"
+    ],
+    "transform": {
+      "^.+\\.(ts|tsx)$": "<rootDir>/test-helpers/test-preprocessor.js"
+    },
+    "testRegex": "/__tests__/.*\\.(ts|tsx|js)$",
+    "globals": {
+      "__DEV__": true
+    }
+  }
+}

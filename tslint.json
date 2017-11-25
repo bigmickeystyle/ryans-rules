@@ -1,0 +1,8 @@
+{
+  "extends": "@sc/tslint-config-sc",
+  "rules": {
+    "only-arrow-functions": false,
+    "interface-name": false,
+    "member-ordering": false
+  }
+}
