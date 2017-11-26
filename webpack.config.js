@@ -14,18 +14,7 @@ const plugins = (isProduction ? [
       'NODE_ENV': JSON.stringify('production')
     }
   }),
-  new webpack.optimize.DedupePlugin(),
   new webpack.optimize.OccurrenceOrderPlugin(),
-  new webpack.optimize.UglifyJsPlugin({
-    compress: {
-      warnings: false,
-      screw_ie8: true
-    },
-    comments: false,
-    sourceMap: false,
-    mangle: true,
-    minimize: true
-  }),
   new ExtractTextPlugin('/static/[name]-[hash].css')
 ] : [
   new webpack.DefinePlugin({
