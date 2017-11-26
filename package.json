@@ -6,7 +6,7 @@
     "build": "npm run generate-styles && webpack",
     "generate-styles": "tcm src",
     "lint": "tslint \"src/**/*.ts?(x)\"",
-    "start": "npm run generate-styles & webpack && node index.js",
+    "start": "npm build && node index.js",
     "test": "jest src",
     "update-snapshots": "jest src -u"
   },
@@ -18,9 +18,8 @@
     "react-dom": "15.x",
     "react-redux": "^5.0.2",
     "redux": "^3.6.0",
-    "typed-css-modules": "^0.3.0"
-  },
-  "devDependencies": {
+    "typed-css-modules": "^0.3.0",
+    "webpack": "1.x",
     "@types/classnames": "^2.2.3",
     "@types/fetch-mock": "^5.12.0",
     "@types/jest": "^18.1.1",
@@ -54,7 +53,6 @@
     "unexpected": "^10.33.2",
     "unexpected-react": "^4.1.0",
     "unexpected-sinon": "^10.8.2",
-    "webpack": "1.x",
     "webpack-dev-server": "1.x"
   },
   "jest": {
