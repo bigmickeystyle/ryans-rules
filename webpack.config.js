@@ -63,9 +63,7 @@ module.exports = {
       { test: /\.tsx?$/, loader: 'ts-loader' },
       {
         test: /\.css$/,
-        loader: isProduction
-                ? ExtractTextPlugin.extract('style', 'css?modules&importLoaders=1&localIdentName=[name]__[hash:base64:8]&camelCase=true!postcss')
-                : 'style!css?modules&importLoaders=1&localIdentName=[name]__[local]__[hash:base64:5]&camelCase=true!postcss'
+        loader: 'style!css?modules&importLoaders=1&localIdentName=[name]__[local]__[hash:base64:5]&camelCase=true!postcss'
       },
       {
         test: /\.(jpe?g|gif|png|svg)$/,
