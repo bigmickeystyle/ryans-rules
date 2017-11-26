@@ -23,7 +23,7 @@ export default class App extends React.Component<any, any> {
     if (this.state.iWins.length > 0) {
       return this.state.iWins.map((iwin: String, i: number) => {
         const colour = `#${(Math.random() * 0xFFFFFF << 0).toString(16)}`;
-        return <h1 className={styles.iWin} style={{ color: colour }} key={i}>I Win</h1>;
+        return <h1 className={`${styles.iWin} ${styles.resolution}`} style={{ color: colour }} key={i}>I Win</h1>;
       });
     }
   }

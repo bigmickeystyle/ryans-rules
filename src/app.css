@@ -59,79 +59,7 @@ li {
   margin: 5px 0;
 }
 
-label.radioButton {
-  padding: 5px 10px;
-}
-
-label.textField {
-  display: block;
-}
-
 .question input[type=text],
 .question input[type=email] {
   width: 400px;
-}
-
-input[readonly] {
-  color: #999;
-}
-
-input[type=checkbox],
-input[type=radio] {
-  vertical-align: middle;
-}
-
-input[type=text],
-input[type=email] {
-  padding: 5px 8px;
-}
-
-input[type=text].dateIsh,
-input[type=text].ipAddress {
-  width: 200px;
-}
-
-textarea {
-  width: 100%;
-  height: 100px;
-}
-
-.formField.string label,
-.formField.text label {
-  display: block;
-  margin: 20px 0 0 0;
-  padding: 0;
-}
-
-.wrapper {
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.subquestion {
-  display: block;
-  margin: 20px 0 0 0;
-}
-
-.suggestion {
-  margin: 20px 0 0 0;
-}
-
-* + p,
-* + form,
-* + ul {
-   margin: 20px 0 0 0;
-}
-
-footer {
-  text-align: right;
-  margin-top: 20px;
-}
-
-p.caution {
-  color: #f50;
-}
-
-.confirmation {
-  padding: 10px;
 }
