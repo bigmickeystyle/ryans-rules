@@ -37,6 +37,8 @@ const plugins = (isProduction ? [
 //   { test: /\.js$/, loader: 'source-map-loader' }
 // ] : [];
 
+const preLoaders = [];
+
 module.exports = {
   entry: {
     app: './src/start.tsx',
