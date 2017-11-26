@@ -33,9 +33,9 @@ const plugins = (isProduction ? [
   })
 ]).concat(commonPlugins);
 
-const preLoaders = isProduction ? [
-  { test: /\.js$/, loader: 'source-map-loader' }
-] : [];
+// const preLoaders = isProduction ? [
+//   { test: /\.js$/, loader: 'source-map-loader' }
+// ] : [];
 
 module.exports = {
   entry: {

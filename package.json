@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "npm run generate-styles && webpack",
+    "build": "npm run generate-styles && ./node_modules/.bin/webpack",
     "generate-styles": "tcm src",
     "lint": "tslint \"src/**/*.ts?(x)\"",
-    "start": "npm build && node index.js",
+    "start": "npm run build && node index.js",
     "test": "jest src",
     "update-snapshots": "jest src -u"
   },
