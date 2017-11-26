@@ -37,15 +37,13 @@ const plugins = (isProduction ? [
 //   { test: /\.js$/, loader: 'source-map-loader' }
 // ] : [];
 
-const preLoaders = [];
-
 module.exports = {
   entry: {
     app: './src/start.tsx',
     vendor: ['react', 'react-dom', 'redux', 'react-redux']
   },
   output: {
-    filename: '/static/app-[hash].js',
+    filename: './static/app-[hash].js',
     path: __dirname + '/dist'
   },
 
@@ -54,7 +52,7 @@ module.exports = {
   plugins,
 
   resolve: {
-    extensions: ['', '.webpack.js', '.web.js', '.ts', '.tsx', '.js']
+    extensions: ['.webpack.js', '.web.js', '.ts', '.tsx', '.js']
   },
 
   module: {
@@ -63,7 +61,27 @@ module.exports = {
       { test: /\.tsx?$/, loader: 'ts-loader' },
       {
         test: /\.css$/,
-        loader: 'style!css?modules&importLoaders=1&localIdentName=[name]__[local]__[hash:base64:5]&camelCase=true!postcss'
+        use: [
+          'style-loader', {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1
+            }
+          }, {
+            loader: 'postcss-loader',
+            options: {
+              plugins: function () {
+                return [
+                  require('postcss-import')(),
+                  require('postcss-cssnext')({
+                          browsers: ['last 2 versions', 'ie >= 10', 'safari >= 8']
+                        })
+                ];
+              }
+            }
+          }
+        ]
+
       },
       {
         test: /\.(jpe?g|gif|png|svg)$/,
@@ -73,8 +91,6 @@ module.exports = {
         }
       }
     ],
-
-    preLoaders
   },
 
   devServer: {
@@ -92,12 +108,12 @@ module.exports = {
     }
   },
 
-  postcss() {
-    return [
-      require('postcss-import'),
-      require('postcss-cssnext')({
-        browsers: ['last 2 versions', 'ie >= 10', 'safari >= 8']
-      })
-    ];
-  }
+  // postcss() {
+  //   return [
+  //     require('postcss-import'),
+  //     require('postcss-cssnext')({
+  //       browsers: ['last 2 versions', 'ie >= 10', 'safari >= 8']
+  //     })
+  //   ];
+  // }
 };
