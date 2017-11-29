@@ -4,9 +4,10 @@ const webpack = require('webpack');
 const isProduction = process.env['NODE_ENV'] === 'production';
 
 const commonPlugins = [
-  new webpack.optimize.CommonsChunkPlugin({ name: 'vendor', filename: '/static/vendor-[hash].js' }),
+  new webpack.optimize.CommonsChunkPlugin({ name: 'vendor', filename: './static/vendor-[hash].js' }),
   new HtmlWebpackPlugin({ template: 'src/index.html' })
 ];
+
 const plugins = (isProduction ? [
   new webpack.DefinePlugin({
     '__DEV__': !isProduction,
@@ -22,10 +23,6 @@ const plugins = (isProduction ? [
   })
 ]).concat(commonPlugins);
 
-// const preLoaders = isProduction ? [
-//   { test: /\.js$/, loader: 'source-map-loader' }
-// ] : [];
-
 module.exports = {
   entry: {
     app: './src/start.tsx',
@@ -36,9 +33,9 @@ module.exports = {
     path: __dirname + '/dist'
   },
 
-  devtool: isProduction ? undefined : 'source-map',
-
   plugins,
+
+  devtool: isProduction ? undefined : 'source-map',
 
   resolve: {
     extensions: ['.webpack.js', '.web.js', '.ts', '.tsx', '.js']
@@ -46,37 +43,24 @@ module.exports = {
 
   module: {
     loaders: [
-      // All files with a '.ts' or '.tsx' extension will be handled by 'ts-loader'.
       { test: /\.tsx?$/, loader: 'ts-loader' },
       {
         test: /\.css$/,
         use: [
-          'style-loader', {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 1
-            }
-          }, {
-            loader: 'postcss-loader',
-            options: {
-              plugins: function () {
-                return [
-                  require('postcss-import')(),
-                  require('postcss-cssnext')({
-                          browsers: ['last 2 versions', 'ie >= 10', 'safari >= 8']
-                        })
-                ];
+          "style-loader",
+          {
+              loader: "css-loader",
+              options: {
+                  modules: true, importLoaders: 1
               }
-            }
-          }
+          },
+          "postcss-loader"
         ]
-
-      },
-      {
+      }, {
         test: /\.(jpe?g|gif|png|svg)$/,
         loader: 'file-loader',
         query: {
-          name: '/static/images/[name].[ext]'
+          name: './static/images/[name].[ext]'
         }
       }
     ],
@@ -96,13 +80,4 @@ module.exports = {
       chunkModules: false
     }
   },
-
-  // postcss() {
-  //   return [
-  //     require('postcss-import'),
-  //     require('postcss-cssnext')({
-  //       browsers: ['last 2 versions', 'ie >= 10', 'safari >= 8']
-  //     })
-  //   ];
-  // }
 };

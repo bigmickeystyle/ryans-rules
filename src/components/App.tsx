@@ -1,5 +1,7 @@
 import * as React from 'react';
-import * as styles from './../app.css';
+import * as styles from '../app.css';
+
+const ryan = require('../assets/images/RYANOFTHRONES.jpg')
 
 export default class App extends React.Component<any, any> {
 
@@ -8,22 +10,23 @@ export default class App extends React.Component<any, any> {
     this.state = {
       iWins: []
     };
+    console.log(styles.iWin)
     this.iWin = this.iWin.bind(this);
   }
 
   private iWin() {
     let newArray =  this.state.iWins;
-    newArray.push('win');
-    this.setState((prevState) => ({
+    const colour = `#${(Math.random() * 0xFFFFFF << 0).toString(16)}`
+    newArray.push(colour);
+    this.setState({
       iWins: newArray
-    }));
+    });
   }
 
   private generateIWins() {
     if (this.state.iWins.length > 0) {
       return this.state.iWins.map((iwin: String, i: number) => {
-        const colour = `#${(Math.random() * 0xFFFFFF << 0).toString(16)}`;
-        return <h1 className={`${styles.iWin} ${styles.resolution}`} style={{ color: colour }} key={i}>I Win</h1>;
+        return <h1 className={`${styles.iWin} ${styles.resolution}`} style={{ color: iwin }} key={i}>I Win</h1>;
       });
     }
   }
@@ -31,7 +34,8 @@ export default class App extends React.Component<any, any> {
   public render() {
     return (
       <div className={styles.container}>
-        <h1 className={styles.question} onClick={this.iWin}>Ryan's Rules</h1>
+        <h1 className={styles.title} >Ryan's Rules</h1>
+        <img className={styles.image} src={ryan} onClick={this.iWin}/>
         {this.generateIWins()}
       </div>
     );

@@ -75,5 +75,9 @@
     "globals": {
       "__DEV__": true
     }
+  },
+  "devDependencies": {
+    "file-loader": "^1.1.5",
+    "url-loader": "^0.6.2"
   }
 }

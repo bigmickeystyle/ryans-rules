@@ -12,23 +12,23 @@ body {
 }
 
 .container {
-  border-top: 3px solid #ff5500;
+  border-top: 3px solid blue;
   max-width: 800px;
   margin: 0 auto;
 }
 
 .iWin {
-  animation: rotate
+  animation-name: i-win;
+  animation-duration: 0.5s;
 }
 
-@keyframes rotate {
+@keyframes i-win {
   0% {
-    transform: rotate(0deg);
-    margin-left: 0;
+    position: absolute;
+    left: 0;
   }
   100% {
-    transform: rotate(360deg);
-    margin-left: 50%;
+    left: 50%;
   }
 }
 
@@ -37,16 +37,17 @@ ul {
   padding: 0;
 }
 
-.question {
+.title {
+  text-align: center;
   margin: 20px 0;
   padding: 20px;
   background: #fff;
 }
 
-.resolution {
-  margin: 0 0 20px 0;
-  padding: 20px;
-  background: #f0ffe8;
+.image {
+  width: 100%;
+  border: 3px solid black;
+  border-radius: 150px;
 }
 
 .question > .text {
@@ -57,9 +58,4 @@ li {
   list-style-type: none;
 
   margin: 5px 0;
-}
-
-.question input[type=text],
-.question input[type=email] {
-  width: 400px;
 }
