@@ -49,6 +49,10 @@ ul {
   display: inline-block;
 }
 
+.ryanImage:hover {
+  cursor: pointer
+}
+
 .question > .text {
   font-weight: bold;
 }
