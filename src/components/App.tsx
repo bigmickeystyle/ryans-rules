@@ -1,7 +1,10 @@
 import * as React from 'react';
-import * as styles from '../app.css';
+import { iWin, resolution, container, title, ryanImage } from '../app.css';
 
-const ryan = require('../assets/images/RYANOFTHRONES.jpg')
+import Nav from './Navigation';
+import Title from './Title';
+
+const ryan = require('../assets/images/ryan-flipped-circled.png')
 
 export default class App extends React.Component<any, any> {
 
@@ -10,7 +13,6 @@ export default class App extends React.Component<any, any> {
     this.state = {
       iWins: []
     };
-    console.log(styles.iWin)
     this.iWin = this.iWin.bind(this);
   }
 
@@ -26,17 +28,20 @@ export default class App extends React.Component<any, any> {
   private generateIWins() {
     if (this.state.iWins.length > 0) {
       return this.state.iWins.map((iwin: String, i: number) => {
-        return <h1 className={`${styles.iWin} ${styles.resolution}`} style={{ color: iwin }} key={i}>I Win</h1>;
+        return <h1 className={`${iWin} ${resolution}`} style={{ color: iwin }} key={i}>I Win</h1>;
       });
     }
   }
 
   public render() {
     return (
-      <div className={styles.container}>
-        <h1 className={styles.title} >Ryan's Rules</h1>
-        <img className={styles.image} src={ryan} onClick={this.iWin}/>
-        {this.generateIWins()}
+      <div>
+        <Nav />
+        <div className={container}>
+          <img className={ryanImage} src={ryan} onClick={this.iWin}/>
+          <Title />
+          {this.generateIWins()}
+        </div>
       </div>
     );
   }

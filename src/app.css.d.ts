@@ -4,4 +4,6 @@ export const rotate: string;
 export const title: string;
 export const resolution: string;
 export const text: string;
-export const image: string;
+export const ryanImage: string;
+export const navigation: string;
+export const logo: string;
